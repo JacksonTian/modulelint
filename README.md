@@ -69,3 +69,29 @@ exports.check = function (source, callback) {
 
 ## 不算指导的指导
 [优秀的JavaScript模块是怎样炼成的](http://www.infoq.com/cn/articles/how-to-create-great-js-module)
+
+## 如何调用？
+安装为命令行工具
+
+```
+npm install modulelist -g
+```
+
+自检一下试试看：
+
+```
+modulelist -i ~/git/modulelist
+```
+结果：
+
+```
+项目路径：/Users/jacksontian/git/modulelint
+{ score: 10,
+  info: [ 'folder `doc` is missing', 'folder `test` is missing' ] }
+```
+根据指导信息添加`doc`和`test`目录后：
+
+```
+项目路径：/Users/jacksontian/git/modulelint
+{ score: 30, info: [] }
+```
