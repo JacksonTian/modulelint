@@ -1,0 +1,23 @@
+{
+  "name": "modulelint",
+  "version": "0.0.1",
+  "description": "Check the module",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JacksonTian/modulelint.git"
+  },
+  "bin": {
+    "modulelint": "./bin/modulelint"
+  },
+  "keywords": [
+    "Module",
+    "Lint",
+    "Package"
+  ],
+  "author": "Jackson Tian",
+  "license": "MIT"
+}

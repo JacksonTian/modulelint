@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require('commander'),
+  fs = require('fs'),
+  path = require('path'),
+  lint = require('../');
+
+// options
+
+program
+  .version(lint.version)
+  .option('-i, --input <folder>', 'Where is the project');
+
+// examples
+
+program.on('--help', function(){
+  console.log('  Examples:');
+  console.log('');
+  console.log('    $ modulelint -i <folder>');
+  console.log('');
+});
+
+// parse argv
+program.parse(process.argv);
+
+if (!program.input) {
+  console.log('$ modulelint -i <folder>');
+} else {
+  // process stdin
+  var input = path.resolve(program.input);
+  lint.sniffe(input, function (err, result) {
+    console.log("项目路径：" + input);
+    console.log(result);
+  });
+}
