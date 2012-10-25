@@ -51,6 +51,7 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
  */
 exports.check = function (source, callback) {
   // 你的实现
+  // 不对你用同步或异步方法做任何限制，但是为了兼容两种情况，结果请用callback传递返回
   if (err) {
     callback(err);
   } else {
