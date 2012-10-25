@@ -85,13 +85,22 @@ modulelist -i ~/git/modulelist
 结果：
 
 ```
+modulelint jacksontian $modulelint -i .
 项目路径：/Users/jacksontian/git/modulelint
-{ score: 10,
-  info: [ 'folder `doc` is missing', 'folder `test` is missing' ] }
+总得分数为：10
+==============
+检查项：folder
+得分：10
+1. folder `doc` is missing
+2. folder `test` is missing
 ```
 根据指导信息添加`doc`和`test`目录后：
 
 ```
+modulelint jacksontian $modulelint -i .
 项目路径：/Users/jacksontian/git/modulelint
-{ score: 30, info: [] }
+总得分数为：30
+==============
+检查项：folder
+得分：30
 ```

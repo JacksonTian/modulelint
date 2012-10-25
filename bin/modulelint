@@ -41,7 +41,7 @@ if (!program.input) {
       console.log("检查项：" + result.name);
       console.log("得分：" + result.score);
       var info = result.info;
-      var reasons = (Array.isArray(info) && info.length) ? info: (info ? [info] : []);
+      var reasons = Array.isArray(info) ? info: (info ? [info] : []);
       reasons.forEach(function (reason, index) {
         console.log((index + 1) + ". " + reason);
       });

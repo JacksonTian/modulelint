@@ -19,7 +19,8 @@
     "Package"
   ],
   "dependencies": {
-    "commander": "*"
+    "commander": "*",
+    "eventproxy": ">=0.1.4"
   },
   "author": "Jackson Tian",
   "license": "MIT"
