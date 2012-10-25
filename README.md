@@ -6,9 +6,9 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
 ## 初步思路
 
 - 检查模块的目录是否符合CommonJS包规范，每符合一样加10分
-  - lib
-  - doc
-  - test
+  - 【√】lib
+  - 【√】doc
+  - 【√】test
   - package.json
 - 检查README文件的内容，去掉空格后1000字10分。上限30分
 - 检查License文件。具备License文件的项目加10分
