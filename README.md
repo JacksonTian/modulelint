@@ -6,6 +6,10 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
 ## 初步思路
 
 - 检查模块的目录是否符合CommonJS包规范，每符合一样加10分
+  - lib
+  - doc
+  - test
+  - package.json
 - 检查README文件的内容，去掉空格后1000字10分。上限30分
 - 检查License文件。具备License文件的项目加10分
 - 检查测试用例数量。每个case加2分
@@ -22,6 +26,40 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
 
 ## 求你帮实现
 上面罗列了一些初步的检测项，您也看到了，这是一件复杂的事情。每一项都要去寻找对应的工具来进行分析。所求代码贡献。
+
+### 代码提交指南
+目录结构的组织如下
+
+```
+├── README.md
+├── bin
+│   └── modulelint
+├── index.js
+├── lib
+│   ├── checklist // 该目录存放所有的检查项
+│   │   └── folder.js // 检查项，必须导出check方法。
+│   └── modulelint.js
+└── package.json
+```
+
+每个提交的检查相都应该存放在checklist目录下。每个检查相都应该导出check方法
+```
+/**
+ * 检查项
+ * @param {String} source 检查的目录
+ * @param {Function} callback 返回数据的回调函数
+ */
+exports.check = function (source, callback) {
+  // 你的实现
+  if (err) {
+    callback(err);
+  } else {
+    // 返回的结果包含两个属性。分数和纠错信息
+    // result = {score: 10, info: somereason};
+    callback(null, result);
+  }
+};
+```
 
 ## 目标
 每个开发者在完成他的模块之后，并不知道他做得好不好。排除掉模块的功能和接口是否优秀和令人感兴趣，至少我们可以从基本功上看开发者是否努力。
