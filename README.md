@@ -18,6 +18,7 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
 - 项目协作。通过'git summary'，查看contributor的数量，从2个开始，每多一个贡献者，加10分
 - 通过npm info或registry.npm.org/module接口检查当前模块是否发布，已发布则加5分
 - travis-ci加10分。passing状态加5分，反之扣5分
+- 文件utf-8 without BOM检测。查出非utf8 without BOM，每个文件扣5分
 
 ## 求你帮实现
 上面罗列了一些初步的检测项，您也看到了，这是一件复杂的事情。每一项都要去寻找对应的工具来进行分析。所求代码贡献。
