@@ -18,6 +18,9 @@
     "Lint",
     "Package"
   ],
+  "dependencies": {
+    "commander": "*"
+  },
   "author": "Jackson Tian",
   "license": "MIT"
 }
