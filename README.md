@@ -104,3 +104,20 @@ modulelint jacksontian $modulelint -i .
 检查项：folder
 得分：30
 ```
+
+
+## 值得致谢的贡献者们
+以下数据通过`git-summary`于2012-10-27生成。
+
+```
+
+ project  : modulelint
+ repo age : 2 days
+ active   : 3 days
+ commits  : 18
+ files    : 7
+ authors  : 
+    17	Jackson Tian            94.4%
+     1	Will Wen Gunn           5.6%
+
+```
