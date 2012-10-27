@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>modulelint Documentation</title>
+    <meta name="keywords" content="Module,Lint,Package" />
+    <meta name="description" content="Check the module" />
+    <script src="assets/prettify.js"></script>
+    <script src="assets/jquery-1.8.2.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/base.css" />
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">modulelint</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+            
+              <li>
+                <a href="./api.html">API Docs</a>
+              </li>
+            
+            
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header class="jumbotron subhead">
+      <div class="container">
+        <h1>modulelint <small>Version: 0.0.1 By @Jackson Tian</small></h1>
+        <p class="lead">
+          Check the module
+        </p>
+      </div>
+    </header>
+<div class="container content">
+  <div class="row">
+    <div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav affix">
+
+  <li>
+    <a href="#api_modulelint"><i class="icon-chevron-right"></i>modulelint</a>
+  </li>
+
+  <li>
+    <a href="#api_checklist/folder"><i class="icon-chevron-right"></i>checklist/folder</a>
+  </li>
+
+</ul>
+
+    </div>
+    <div class="span9">
+      
+        <section id="api_modulelint" class="api">
+  <h2>modulelint: API索引</h2>
+  <ul class="indexs">
+  
+    <li>
+      <a href="#exports_sniffe">sniffe</a>
+    </li>
+
+  </ul>
+  <hr />
+
+  
+  <h3 id="exports_sniffe">
+    sniffe
+  </h3>
+  
+
+  <p>In me the tiger sniffe the rose</p>
+
+  <table class="table">
+  
+    <tr>
+      <td>方法</td>
+      <td>exports.sniffe()</td> 
+      <td>exports</td>
+      <td>sniffe</td>
+    </tr>
+  
+
+    <tr>
+      <td>参数</td>
+      <td>source(String)</td>
+      <td colspan="2">需要检查的路径</td>
+    </tr>
+  
+
+    <tr>
+      <td>参数</td>
+      <td>callback(Function)</td>
+      <td colspan="2">回调函数，传递所有检查器的分数和诊断信息</td>
+    </tr>
+  
+
+  
+    <tr>
+      <td>代码</td><td colspan="3"><pre><code>exports.sniffe = function (source, callback) {
+  var checklist = exports.loadChecklist();
+  var proxy = new EventProxy();
+  var length = checklist.length;
+
+  proxy.after('checked', length, function (results) {
+    callback(null, results);
+  });
+  proxy.on('error', function (err) {
+    proxy.unbind();
+    callback(err);
+  });
+  checklist.forEach(function (checker) {
+    checker.check(source, function (err, result) {
+      if (err) {
+        proxy.fire('error', err);
+        return;
+      }
+      result.name = checker.name;
+      proxy.fire('checked', result);
+    });
+  });
+};</code></pre></td>
+    </tr>
+  
+  </table>
+  
+</section>
+      
+        <section id="api_checklist/folder" class="api">
+  <h2>checklist/folder: API索引</h2>
+  <ul class="indexs">
+  
+    <li>
+      <a href="#exports_check">check</a>
+    </li>
+
+  </ul>
+  <hr />
+
+  
+  <h3 id="exports_check">
+    check
+  </h3>
+  
+
+  <p>检查<code>doc</code>、<code>lib</code>、<code>test</code>三个目录，每个目录10分。</p>
+
+  <table class="table">
+  
+    <tr>
+      <td>方法</td>
+      <td>exports.check()</td> 
+      <td>exports</td>
+      <td>check</td>
+    </tr>
+  
+
+    <tr>
+      <td>参数</td>
+      <td>source(String)</td>
+      <td colspan="2">需要检查的路径</td>
+    </tr>
+  
+
+    <tr>
+      <td>参数</td>
+      <td>callback(Function)</td>
+      <td colspan="2">回调函数，如果成功，将传递分数和诊断信息</td>
+    </tr>
+  
+
+  
+    <tr>
+      <td>代码</td><td colspan="3"><pre><code>exports.check = function (source, callback) {
+  var results = ['doc', 'lib', 'test'].map(function (_path) {
+    return [_path, check(source, _path)];
+  });
+  var passed = results.filter(function (result) {
+    return result[1];
+  });
+  var unpassed = results.filter(function (result) {
+    return !result[1];
+  });
+  var info = unpassed.map(function (folder) {
+    return 'folder `' + folder[0] + '` is missing';
+  });
+  return callback(null, {score: passed.length * 10, info: info});
+};</code></pre></td>
+    </tr>
+  
+  </table>
+  
+</section>
+      
+    </div>
+  </div>
+</div>
+      <footer class="footer">
+        <div class="container">
+          <p class="pull-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>此文档通过doxmate生成。主题借鉴Bootstrap API文档风格，注解基于<a href="https://github.com/visionmedia/dox">Dox</a>。欢迎关注doxmate作者<a href="http://weibo.com/shyvo" target="_blank">@朴灵</a></p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/visionmedia/dox">Dox主页</a></li>
+            <li><a href="http://html5ify.com/doxmate">Doxmate主页</a></li>
+            <li><a href="https://github.com/JacksonTian/doxmate/issues?state=open">提交bug</a></li>
+          </ul>
+      </div>
+    </footer>
+    <script>
+      $(function() {
+        $('pre').addClass('prettyprint');
+        $('td pre').removeClass('prettyprint');
+        prettyPrint();
+        var $window = $(window);
+        $('.bs-docs-sidenav').affix({
+          offset: {
+            top: function () {
+              return $window.width() <= 980 ? 290 : 210
+            },
+            bottom: 270
+          }
+        });
+        $(".content").find('h1, h2, h3, h4, h5, h6').each(function () {
+          var node = $(this);
+          if (!node.attr("id")) {
+            node.attr("id", "index_" + node.text());
+          }
+          node.css("paddingTop", 40);
+        });
+      });
+    </script>
+  
+  </body>
+</html>

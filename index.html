@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>modulelint Documentation</title>
+    <meta name="keywords" content="Module,Lint,Package" />
+    <meta name="description" content="Check the module" />
+    <script src="assets/prettify.js"></script>
+    <script src="assets/jquery-1.8.2.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/base.css" />
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">modulelint</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+            
+              <li>
+                <a href="./api.html">API Docs</a>
+              </li>
+            
+            
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header class="jumbotron subhead">
+      <div class="container">
+        <h1>modulelint <small>Version: 0.0.1 By @Jackson Tian</small></h1>
+        <p class="lead">
+          Check the module
+        </p>
+      </div>
+    </header>
+<div class="container content">
+  <div class="row">
+  	<div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav affix">
+
+  <li class="level_2">
+    <a href="#index_初步思路" title="初步思路">
+      <i class="icon-chevron-right"></i>初步思路
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_求你帮实现" title="求你帮实现">
+      <i class="icon-chevron-right"></i>求你帮实现
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_目标" title="目标">
+      <i class="icon-chevron-right"></i>目标
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_不算指导的指导" title="不算指导的指导">
+      <i class="icon-chevron-right"></i>不算指导的指导
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_如何调用？" title="如何调用？">
+      <i class="icon-chevron-right"></i>如何调用？
+    </a>
+  </li>
+
+  <li class="level_2">
+    <a href="#index_值得致谢的贡献者们" title="值得致谢的贡献者们">
+      <i class="icon-chevron-right"></i>值得致谢的贡献者们
+    </a>
+  </li>
+
+</ul>
+
+    </div>
+    <div class="span9">
+      <section>
+        <h1>modulelint</h1>
+<p>Module Lint是一款检测模块各种素质的工具。面向Node模块开发人员。
+
+</p>
+<h2>初步思路</h2>
+<ul>
+<li>检查模块的目录是否符合CommonJS包规范，每符合一样加10分<ul>
+<li>[√]lib</li>
+<li>[√]doc</li>
+<li>[√]test</li>
+<li>package.json</li>
+</ul>
+</li>
+<li>检查README文件的内容，去掉空格后1000字10分。上限30分</li>
+<li>检查License文件。具备License文件的项目加10分</li>
+<li>检查测试用例数量。每个case加2分</li>
+<li>检查测试覆盖率。覆盖率从50%开始，每覆盖5%加5分。高于95%加10分</li>
+<li>检查Coding Style, 每个文件不超过3个问题的，加2分。没有问题的加5分</li>
+<li>模块名字少于10个字母的，加5分</li>
+<li>API注释，每个完整的注释加5分</li>
+<li>文档。doc目录下每个文档加5分。每个文档去空格后，不应少于500字。</li>
+<li>Change log的检查，具备Change log的加5分</li>
+<li>项目协作。通过&#39;git summary&#39;，查看contributor的数量，从2个开始，每多一个贡献者，加10分</li>
+<li>通过npm info或registry.npm.org/module接口检查当前模块是否发布，已发布则加5分</li>
+<li>travis-ci加10分。passing状态加5分，反之扣5分</li>
+<li>文件utf-8 without BOM检测。查出非utf8 without BOM，每个文件扣5分</li>
+</ul>
+<h2>求你帮实现</h2>
+<p>上面罗列了一些初步的检测项，您也看到了，这是一件复杂的事情。每一项都要去寻找对应的工具来进行分析。所求代码贡献，每成功提交和合并一个检查器，赠送图灵社区图书一本。
+
+</p>
+<h3>代码提交指南</h3>
+<p>目录结构的组织如下
+
+</p>
+<pre><code>├── README.md
+├── bin
+│   └── modulelint
+├── index.js
+├── lib
+│   ├── checklist // 该目录存放所有的检查项
+│   │   └── folder.js // 检查项，必须导出check方法。
+│   └── modulelint.js
+└── package.json</code></pre>
+<p>每个提交的检查相都应该存放在checklist目录下。每个检查相都应该导出check方法
+</p>
+<pre><code>/**
+ * 检查项
+ * @param {String} source 检查的目录
+ * @param {Function} callback 返回数据的回调函数
+ */
+exports.check = function (source, callback) {
+  // 你的实现
+  // 不对你用同步或异步方法做任何限制，但是为了兼容两种情况，结果请用callback传递返回
+  if (err) {
+    callback(err);
+  } else {
+    // 返回的结果包含两个属性。分数和纠错信息
+    // result = {score: 10, info: somereason};
+    callback(null, result);
+  }
+};</code></pre>
+<h2>目标</h2>
+<p>每个开发者在完成他的模块之后，并不知道他做得好不好。排除掉模块的功能和接口是否优秀和令人感兴趣，至少我们可以从基本功上看开发者是否努力。
+高分值也可以让模块开发者得到一点点成就感。<br>希望这个指标可以略微量化下开源开发者做出的努力和收获，在推动标准化和提高基本要求方面出一点力。  
+
+</p>
+<h2>不算指导的指导</h2>
+<p><a href="http://www.infoq.com/cn/articles/how-to-create-great-js-module">优秀的JavaScript模块是怎样炼成的</a>
+
+</p>
+<h2>如何调用？</h2>
+<p>安装为命令行工具
+
+</p>
+<pre><code>npm install modulelint -g</code></pre>
+<p>自检一下试试看：
+
+</p>
+<pre><code>modulelint -i ~/git/modulelint</code></pre>
+<p>结果：
+
+</p>
+<pre><code>modulelint jacksontian $modulelint -i .
+项目路径：/Users/jacksontian/git/modulelint
+总得分数为：10
+==============
+检查项：folder
+得分：10
+1. folder `doc` is missing
+2. folder `test` is missing</code></pre>
+<p>根据指导信息添加<code>doc</code>和<code>test</code>目录后：
+
+</p>
+<pre><code>modulelint jacksontian $modulelint -i .
+项目路径：/Users/jacksontian/git/modulelint
+总得分数为：30
+==============
+检查项：folder
+得分：30</code></pre>
+<h2>值得致谢的贡献者们</h2>
+<p>以下数据通过<code>git-summary</code>于2012-10-27生成。
+
+</p>
+<pre><code>
+ project  : modulelint
+ repo age : 2 days
+ active   : 3 days
+ commits  : 18
+ files    : 7
+ authors  : 
+    17    Jackson Tian            94.4%
+     1    Will Wen Gunn           5.6%</code></pre>
+
+      </section>
+    </div>
+  </div>
+</div>
+      <footer class="footer">
+        <div class="container">
+          <p class="pull-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>此文档通过doxmate生成。主题借鉴Bootstrap API文档风格，注解基于<a href="https://github.com/visionmedia/dox">Dox</a>。欢迎关注doxmate作者<a href="http://weibo.com/shyvo" target="_blank">@朴灵</a></p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/visionmedia/dox">Dox主页</a></li>
+            <li><a href="http://html5ify.com/doxmate">Doxmate主页</a></li>
+            <li><a href="https://github.com/JacksonTian/doxmate/issues?state=open">提交bug</a></li>
+          </ul>
+      </div>
+    </footer>
+    <script>
+      $(function() {
+        $('pre').addClass('prettyprint');
+        $('td pre').removeClass('prettyprint');
+        prettyPrint();
+        var $window = $(window);
+        $('.bs-docs-sidenav').affix({
+          offset: {
+            top: function () {
+              return $window.width() <= 980 ? 290 : 210
+            },
+            bottom: 270
+          }
+        });
+        $(".content").find('h1, h2, h3, h4, h5, h6').each(function () {
+          var node = $(this);
+          if (!node.attr("id")) {
+            node.attr("id", "index_" + node.text());
+          }
+          node.css("paddingTop", 40);
+        });
+      });
+    </script>
+  
+  </body>
+</html>
