@@ -74,13 +74,13 @@ exports.check = function (source, callback) {
 安装为命令行工具
 
 ```
-npm install modulelist -g
+npm install modulelint -g
 ```
 
 自检一下试试看：
 
 ```
-modulelist -i ~/git/modulelist
+modulelint -i ~/git/modulelint
 ```
 结果：
 
