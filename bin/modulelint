@@ -30,21 +30,27 @@ if (!program.input) {
 } else {
   // process stdin
   var input = path.resolve(program.input);
+  console.log("项目路径：" + input);
   lint.sniffe(input, function (err, results) {
-    console.log("项目路径：" + input);
+    if (err) {
+      console.log("出现异常：");
+      console.log(err);
+      return;
+    }
     var total = results.reduce(function (memo, currect) {
       return memo + currect.score;
     }, 0);
     console.log("总得分数为：" + total);
     console.log("==============");
     results.forEach(function (result) {
-      console.log("检查项：" + result.name);
+      console.log("检查项：" + result.name + " " + result.rule);
       console.log("得分：" + result.score);
       var info = result.info;
       var reasons = Array.isArray(info) ? info: (info ? [info] : []);
       reasons.forEach(function (reason, index) {
         console.log((index + 1) + ". " + reason);
       });
+      console.log("--------------");
     });
   });
 }
