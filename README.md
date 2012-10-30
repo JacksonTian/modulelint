@@ -111,13 +111,13 @@ modulelint jacksontian $modulelint -i .
 
 ```
 
- project  : modulelint
- repo age : 2 days
- active   : 3 days
- commits  : 18
- files    : 7
+project  : modulelint
+ repo age : 5 days ago
+ commits  : 24
+ active   : 5 days
+ files    : 9
  authors  : 
-    17	Jackson Tian            94.4%
-     1	Will Wen Gunn           5.6%
-
+    19	Jackson Tian            79.2%
+     4	tianqi                  16.7%
+     1	Will Wen Gunn           4.2%
 ```
