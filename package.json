@@ -22,7 +22,7 @@
     "commander": "*",
     "eventproxy": ">=0.1.4",
     "walkdo": "0.9.3",
-	"urllib": "*"
+    "urllib": "*"
   },
   "author": "Jackson Tian",
   "license": "MIT"
