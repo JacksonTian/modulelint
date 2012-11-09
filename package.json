@@ -21,7 +21,8 @@
   "dependencies": {
     "commander": "*",
     "eventproxy": ">=0.1.4",
-    "walkdo": "0.9.3"
+    "walkdo": "0.9.3",
+	"urllib": "*"
   },
   "author": "Jackson Tian",
   "license": "MIT"
