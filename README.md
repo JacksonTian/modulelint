@@ -10,7 +10,7 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
   - [√]doc
   - [√]test
   - package.json
-- 检查README文件的内容，去掉空格后1000字10分。上限30分
+- [√]检查README文件的内容，去掉空格后1000字10分。上限30分
 - 检查License文件。具备License文件的项目加10分
 - 检查测试用例数量。每个case加2分
 - 检查测试覆盖率。覆盖率从50%开始，每覆盖5%加5分。高于95%加10分
@@ -111,13 +111,15 @@ modulelint jacksontian $modulelint -i .
 
 ```
 
-project  : modulelint
- repo age : 5 days ago
- commits  : 24
- active   : 5 days
- files    : 9
+ project  : modulelint
+ repo age : 2 weeks
+ active   : 9 days
+ commits  : 38
+ files    : 10
  authors  : 
-    19	Jackson Tian            79.2%
-     4	tianqi                  16.7%
-     1	Will Wen Gunn           4.2%
+    24	Jackson Tian            63.2%
+     7	XiNGRZ                  18.4%
+     6	tianqi                  15.8%
+     1	Will Wen Gunn           2.6%
+
 ```
