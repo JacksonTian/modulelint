@@ -20,7 +20,7 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
 - 文档。doc目录下每个文档加5分。每个文档去空格后，不应少于500字。
 - Change log的检查，具备Change log的加5分
 - 项目协作。通过'git summary'，查看contributor的数量，从2个开始，每多一个贡献者，加10分
-- 通过npm info或registry.npm.org/module接口检查当前模块是否发布，已发布则加5分
+- [✓]通过npm info或registry.npm.org/module接口检查当前模块是否发布，已发布则加5分
 - travis-ci加10分。passing状态加5分，反之扣5分
 - [✓]文件utf-8 without BOM检测。查出非utf8 without BOM，每个文件扣5分
 
