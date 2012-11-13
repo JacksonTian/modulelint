@@ -37,13 +37,18 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
 ├── index.js
 ├── lib
 │   ├── checklist // 该目录存放所有的检查项
-│   │   └── folder.js // 检查项，必须导出check方法。
+│   │   └── folder.js // 检查项，必须导出check方法和rule描述。
 │   └── modulelint.js
 └── package.json
 ```
 
-每个提交的检查相都应该存放在checklist目录下。每个检查相都应该导出check方法
+每个提交的检查相都应该存放在checklist目录下。每个检查相都应该导出rule描述和check方法
+
 ```
+/**
+ * 规则描述
+ */
+exports.rule = "当前规则";
 /**
  * 检查项
  * @param {String} source 检查的目录
@@ -107,19 +112,19 @@ modulelint jacksontian $modulelint -i .
 
 
 ## 值得致谢的贡献者们
-以下数据通过`git-summary`于2012-10-27生成。
+以下数据通过`git-summary`于2012-11-13生成。
 
 ```
 
  project  : modulelint
- repo age : 2 weeks
- active   : 9 days
- commits  : 38
- files    : 10
+ repo age : 3 weeks
+ active   : 13 days
+ commits  : 46
+ files    : 11
  authors  : 
-    24	Jackson Tian            63.2%
-     7	XiNGRZ                  18.4%
-     6	tianqi                  15.8%
-     1	Will Wen Gunn           2.6%
+    29  Jackson Tian            63.0%
+    10  XiNGRZ                  21.7%
+     6  tianqi                  13.0%
+     1  Will Wen Gunn           2.2%
 
 ```
