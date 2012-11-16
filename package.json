@@ -20,8 +20,7 @@
   ],
   "dependencies": {
     "commander": "*",
-    "eventproxy": ">=0.1.4",
-    "line-reader" : ">=0.2.3"
+    "eventproxy": ">=0.1.4"
   },
   "author": "Jackson Tian",
   "license": "MIT"
