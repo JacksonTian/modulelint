@@ -11,17 +11,17 @@ Module Lint是一款检测模块各种素质的工具。面向Node模块开发�
   - [✓]test
   - package.json
 - [✓]检查README文件的内容，去掉空格后1000字10分。上限30分
-- 检查License文件。具备License文件的项目加10分
+- 检查License文件。具备License文件的项目加10分。检查文件名包含License与否。
 - 检查测试用例数量。每个case加2分
 - 检查测试覆盖率。覆盖率从50%开始，每覆盖5%加5分。高于95%加10分
 - 检查Coding Style, 每个文件不超过3个问题的，加2分。没有问题的加5分
 - [✓]模块名字少于10个字母的，加5分
 - API注释，每个完整的注释加5分
-- 文档。doc目录下每个文档加5分。每个文档去空格后，不应少于500字。
-- Change log的检查，具备Change log的加5分
-- 项目协作。通过'git summary'，查看contributor的数量，从2个开始，每多一个贡献者，加10分
+- [✓]文档。doc目录下每个文档加5分。每个文档去空格后，不应少于500字。
+- Change log的检查，具备Change log的加5分。通常是History.md文件
+- [✓]项目协作。通过'git summary'，查看contributor的数量，从2个开始，每多一个贡献者，加10分
 - [✓]通过npm info或registry.npm.org/module接口检查当前模块是否发布，已发布则加5分
-- travis-ci加10分。passing状态加5分，反之扣5分
+- [✓]travis-ci加10分。passing状态加5分，反之扣5分
 - [✓]文件utf-8 without BOM检测。查出非utf8 without BOM，每个文件扣5分
 
 ## 求你帮实现
@@ -112,19 +112,21 @@ modulelint jacksontian $modulelint -i .
 
 
 ## 值得致谢的贡献者们
-以下数据通过`git-summary`于2012-11-13生成。
+以下数据通过`git-summary`于2012-11-26生成。
 
 ```
 
  project  : modulelint
- repo age : 3 weeks
- active   : 13 days
- commits  : 46
- files    : 11
+ repo age : 5 weeks
+ active   : 20 days
+ commits  : 60
+ files    : 14
  authors  : 
-    29  Jackson Tian            63.0%
-    10  XiNGRZ                  21.7%
-     6  tianqi                  13.0%
-     1  Will Wen Gunn           2.2%
+    33	Jackson Tian            55.0%
+    15	XiNGRZ                  25.0%
+     6	tianqi                  10.0%
+     5	Hyvi                    8.3%
+     1	Will Wen Gunn           1.7%
+
 
 ```

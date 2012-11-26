@@ -1,6 +1,6 @@
 {
   "name": "modulelint",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Check the module",
   "main": "index.js",
   "scripts": {
