@@ -1,10 +1,10 @@
 {
   "name": "modulelint",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Check the module",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -R spec"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
     "Package"
   ],
   "dependencies": {
+    "bagpipe": "*",
     "commander": "*",
     "eventproxy": ">=0.1.4",
     "iwalk": "0.0.5",
